@@ -1,1 +1,11 @@
 "id","name","model_id:id","group_id:id","perm_read","perm_write","perm_create","perm_unlink"
+"access_asgard_ledger_export_manager","asgard_ledger_export.asgard.ledger.export","model_asgard_ledger_export","account.group_account_manager",1,1,1,1
+"access_asgard_ledger_export_user","asgard_ledger_export.asgard.ledger.export","model_asgard_ledger_export","account.group_account_user",1,0,0,0
+"access_asgard_ledger_export_journal_manager","asgard_ledger_export.asgard.ledger.export.journal","model_asgard_ledger_export_journal","account.group_account_manager",1,1,1,1
+"access_asgard_ledger_export_journal_user","asgard_ledger_export.asgard.ledger.export.journal","model_asgard_ledger_export_journal","account.group_account_user",1,0,0,0
+"access_asgard_ledger_export_fields_manager","asgard_ledger_export.asgard.ledger.export.fields","model_asgard_ledger_export_fields","account.group_account_manager",1,1,1,1
+"access_asgard_ledger_export_fields_user","asgard_ledger_export.asgard.ledger.export.fields","model_asgard_ledger_export_fields","account.group_account_user",1,0,0,0
+"access_asgard_ledger_export_statement_manager","asgard_ledger_export.asgard.ledger.export.statement","model_asgard_ledger_export_statement","account.group_account_manager",1,1,1,1
+"access_asgard_ledger_export_statement_user","asgard_ledger_export.asgard.ledger.export.statement","model_asgard_ledger_export_statement","account.group_account_user",1,1,1,1
+"access_asgard_ledger_export_statement_line_manager","asgard_ledger_export.asgard.ledger.export.statement.line","model_asgard_ledger_export_statement_line","account.group_account_manager",1,1,1,1
+"access_asgard_ledger_export_statement_line_user","asgard_ledger_export.asgard.ledger.export.statement.line","model_asgard_ledger_export_statement_line","account.group_account_user",1,1,1,1

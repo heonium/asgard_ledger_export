@@ -2,36 +2,58 @@
 # This file contains the translation of the following modules:
 #	* asgard_ledger_export
 #
-# HNM <christophe.crier@heonium.com>, 2009.
 msgid ""
 msgstr ""
-"Project-Id-Version: OpenERP Server 5.0.3\n"
+"Project-Id-Version: OpenERP Server 6.0.3\n"
 "Report-Msgid-Bugs-To: support@openerp.com\n"
-"POT-Creation-Date: 2009-08-26 14:42:04+0000\n"
-"PO-Revision-Date: 2009-08-27 10:18+0200\n"
-"Last-Translator: HNM <christophe.crier@heonium.com>\n"
-"Language-Team: Français <kde-i18n-doc@kde.org>\n"
+"POT-Creation-Date: 2011-11-12 11:31+0000\n"
+"PO-Revision-Date: 2011-11-12 11:31+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: \n"
 "Plural-Forms: \n"
-"X-Generator: Lokalize 0.3\n"
 
 #. module: asgard_ledger_export
-#: model:ir.model,name:asgard_ledger_export.model_asgard_export_ledger_statement_line
 #: model:ir.model,name:asgard_ledger_export.model_asgard_ledger_export_statement_line
 msgid "Export Statement reconcile"
 msgstr "Relevés des exports reconciliés"
 
 #. module: asgard_ledger_export
-#: help:asgard.ledger.export.journal,asgard_ledger_id:0
-msgid "Associated configuration"
-msgstr "Configutation associée"
+#: view:asgard.ledger.export:0
+msgid "File description"
+msgstr "Description du fichier"
 
 #. module: asgard_ledger_export
-#: constraint:ir.actions.act_window:0
-msgid "Invalid model name in the action definition."
-msgstr "Nom de modèle invalide pour la définition de l'action"
+#: help:asgard.ledger.export.journal,asgard_ledger_id:0
+msgid "Associated configuration"
+msgstr "Configuration associée"
+
+#. module: asgard_ledger_export
+#: view:asgard.ledger.export.statement:0
+msgid "Statement"
+msgstr "Relevé"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:253
+#, python-format
+msgid "No Lines !"
+msgstr "Pas de lignes !"
+
+#. module: asgard_ledger_export
+#: field:asgard.ledger.export,company_id:0
+#: field:asgard.ledger.export.fields,company_id:0
+#: field:asgard.ledger.export.journal,company_id:0
+#: field:asgard.ledger.export.statement,company_id:0
+#: field:asgard.ledger.export.statement.line,company_id:0
+msgid "Company"
+msgstr "Companie"
+
+#. module: asgard_ledger_export
+#: help:asgard.ledger.export.statement.line,move_line_id:0
+msgid "Entry selected for ..."
+msgstr "Écritures sélectionnées pour ..."
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export,end_line:0
@@ -45,6 +67,17 @@ msgid "Asgard Ledger Export Statement"
 msgstr "Relevé d'export d'écritures"
 
 #. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:306
+#, python-format
+msgid "No Journal linked !"
+msgstr "Pas de journal lié !"
+
+#. module: asgard_ledger_export
+#: view:asgard.ledger.export.statement:0
+msgid "Re-Generate"
+msgstr "Re-générer"
+
+#. module: asgard_ledger_export
 #: view:asgard.ledger.export.journal:0
 msgid "Journals"
 msgstr "Journaux"
@@ -53,6 +86,12 @@ msgstr "Journaux"
 #: field:asgard.ledger.export.fields,lenght:0
 msgid "Size (lenght)"
 msgstr "Taille (long.)"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:257
+#, python-format
+msgid "Balance need to be equal to zero."
+msgstr "La balance doit être égale à zéro."
 
 #. module: asgard_ledger_export
 #: selection:asgard.ledger.export.fields,type_field:0
@@ -65,15 +104,25 @@ msgid "Account"
 msgstr "Compte"
 
 #. module: asgard_ledger_export
+#: help:asgard.ledger.export,file_header:0
+msgid "Text used to begin file."
+msgstr "Texte utilisé pour commencer le fichier."
+
+#. module: asgard_ledger_export
 #: model:ir.actions.act_window,name:asgard_ledger_export.action_asgard_ledger_export_statement_tree
 #: model:ir.ui.menu,name:asgard_ledger_export.menu_asgard_ledger_export_statement_tree
 msgid "Moves by Statements"
 msgstr "Relevé des mouvements"
 
 #. module: asgard_ledger_export
+#: field:asgard.ledger.export.fields,field_text:0
+msgid "Value"
+msgstr "Valeur"
+
+#. module: asgard_ledger_export
 #: field:asgard.ledger.export.fields,position:0
 msgid "Position"
-msgstr ""
+msgstr "Position"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export,alej_line:0
@@ -84,6 +133,16 @@ msgstr "Asgard - Lignes de journaux"
 #: field:asgard.ledger.export.fields,type_field:0
 msgid "Field type"
 msgstr "Type de champs"
+
+#. module: asgard_ledger_export
+#: field:asgard.ledger.export,encoding:0
+msgid "Encoding"
+msgstr "Encodage"
+
+#. module: asgard_ledger_export
+#: view:asgard.ledger.export:0
+msgid "File name & Encoding"
+msgstr "Nom du fichier & Encodage"
 
 #. module: asgard_ledger_export
 #: view:asgard.ledger.export.journal:0
@@ -98,20 +157,28 @@ msgid "Define export"
 msgstr "Export définit"
 
 #. module: asgard_ledger_export
-#: view:asgard.ledger.export.statement:0
-msgid "Statement"
-msgstr "Relevé"
-
-#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:235
 #: view:asgard.ledger.export.statement:0
 #: selection:asgard.ledger.export.statement,state:0
+#, python-format
 msgid "Confirm"
-msgstr "Confirmer"
+msgstr "Confirmé"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.statement,ales_line_ids:0
 msgid "ALE Lines"
 msgstr "Lignes ALE"
+
+#. module: asgard_ledger_export
+#: help:asgard.ledger.export,extension:0
+msgid "String add on end of name file (without the dot)."
+msgstr "Chaîne ajoutée à la fin du nom du fichier (sans le point)"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:253
+#, python-format
+msgid "You have to add some line to export."
+msgstr "Vous devez ajouter des lignes à exporter."
 
 #. module: asgard_ledger_export
 #: model:ir.actions.act_window,name:asgard_ledger_export.action_asgard_ledger_export_statement_tree2
@@ -140,9 +207,25 @@ msgid "Asgard Ledger Field Lines"
 msgstr "Asgard - Ligne de champs d'écritures"
 
 #. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:257
+#, python-format
+msgid "Bad balance !"
+msgstr "Mauvaise balance !"
+
+#. module: asgard_ledger_export
 #: view:asgard.ledger.export:0
 msgid "Fields lines"
 msgstr "Lignes de champs"
+
+#. module: asgard_ledger_export
+#: selection:asgard.ledger.export,end_line:0
+msgid "Unix"
+msgstr "Unix"
+
+#. module: asgard_ledger_export
+#: selection:asgard.ledger.export.fields,type_field:0
+msgid "Build field"
+msgstr "Champ construit"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.statement,ale_id:0
@@ -150,21 +233,24 @@ msgid "Asgard Ledger"
 msgstr "Asgard Comptabilité"
 
 #. module: asgard_ledger_export
-#: help:asgard.ledger.export.statement.line,move_line_id:0
-msgid "Entry selected for ..."
-msgstr "Écritures sélectionnées pour ..."
+#: selection:asgard.ledger.export,end_line:0
+msgid "Windows"
+msgstr "Windows"
+
+#. module: asgard_ledger_export
+#: field:asgard.ledger.export,file_header:0
+msgid "File header"
+msgstr "Entête de fichier"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.fields,build_cmd:0
-msgid ""
-"Define with folowing sample : \n"
+msgid "Define with folowing sample : \n"
 "                 ['string','%s'] : For standard string field. \n"
 "                 ['string','%20s'] : For right justify string on 20 char. \n"
 "                 ['date','%d/%m/%Y'] : For date formated in french. \n"
 "                 ['float','%f'], : ... \n"
 "                 ['int','%d'] : ..."
-msgstr ""
-"A définir à partir des exemples suivants : \n"
+msgstr "A définir à partir des exemples suivants : \n"
 "                 ['string','%s'] : Pour une chaine standard. \n"
 "                 ['string','%20s'] : Pour une chaine avec justification à droite sur 20 car. \n"
 "                 ['date','%d/%m/%Y'] : Pour une date formatée en français. \n"
@@ -172,9 +258,14 @@ msgstr ""
 "                 ['int','%d'] : ..."
 
 #. module: asgard_ledger_export
+#: selection:asgard.ledger.export,end_line:0
+msgid "Nothing"
+msgstr "Rien"
+
+#. module: asgard_ledger_export
 #: view:asgard.ledger.export.fields:0
 msgid "Asgard fields definition"
-msgstr "Asgard - Déefinition de champs"
+msgstr "Asgard - Définition de champs"
 
 #. module: asgard_ledger_export
 #: view:asgard.ledger.export:0
@@ -185,14 +276,9 @@ msgid "Asgard Ledger Export"
 msgstr "Asgard - Export d'écritures comptable"
 
 #. module: asgard_ledger_export
-#: constraint:ir.ui.view:0
-msgid "Invalid XML for View Architecture!"
-msgstr "XML non valide pour l'architecture de la vue"
-
-#. module: asgard_ledger_export
 #: field:asgard.ledger.export,extension:0
 msgid "Extension"
-msgstr ""
+msgstr "Extension"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.fields,asgard_ledger_id:0
@@ -217,18 +303,25 @@ msgstr "Code du journal cible"
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.fields,field_indirection:0
 msgid "Indirection"
-msgstr ""
+msgstr "Indirection"
 
 #. module: asgard_ledger_export
-#: field:asgard.ledger.export,separator:0
-msgid "Separator"
-msgstr "Séparateur"
+#: help:asgard.ledger.export.fields,lenght:0
+msgid "Lenght of field in exported file."
+msgstr "Long. du champs dans le fichier cible"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.fields,asgard_ledger_id:0
 #: field:asgard.ledger.export.journal,asgard_ledger_id:0
 msgid "Asgard Ledger Ref"
 msgstr "Réf. Asgard Ledger"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:113
+#: sql_constraint:asgard.ledger.export.journal:0
+#, python-format
+msgid "There is already an association with this journal !"
+msgstr "Il existe déjà une association avec ce journal !"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.journal,journal_id:0
@@ -246,9 +339,14 @@ msgid "Date Created Entry"
 msgstr "Date de création de l'écriture"
 
 #. module: asgard_ledger_export
-#: help:asgard.ledger.export.fields,lenght:0
-msgid "Lenght of field in exported file."
-msgstr "Long. du champs dans le fichier cible"
+#: field:asgard.ledger.export,separator:0
+msgid "Separator"
+msgstr "Séparateur"
+
+#. module: asgard_ledger_export
+#: model:ir.model,name:asgard_ledger_export.model_asgard_ledger_export_fields
+msgid "Definition of fields"
+msgstr "Définition des champs"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.fields,field_account:0
@@ -256,7 +354,22 @@ msgid "Select which account filed you want export."
 msgstr "Sélectionner quels champs d'écriture vous voulez exporter."
 
 #. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:114
+#: sql_constraint:asgard.ledger.export.journal:0
+#, python-format
+msgid "There is already an association with this journal (cible name)!"
+msgstr "Il existe déjà une association avec ce journal (nom cible)!"
+
+#. module: asgard_ledger_export
+#: field:asgard.ledger.export.fields,error_label:0
+msgid "Error label"
+msgstr "Libellé de l'erreur"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:235
+#: view:asgard.ledger.export.statement:0
 #: selection:asgard.ledger.export.statement,state:0
+#, python-format
 msgid "Draft"
 msgstr "Brouillon"
 
@@ -292,6 +405,19 @@ msgid "Populate"
 msgstr "Remplir"
 
 #. module: asgard_ledger_export
+#: help:asgard.ledger.export.fields,type_field:0
+msgid "Select the type of field\n"
+"                     Account field : Field of object 'Account'.\n"
+"                     Internal field : Select field from list.\n"
+"                     Text field : Only text.\n"
+"                     Build field : Python code for build value. You can use 'object' and 'time'."
+msgstr "Sélectionne le type de champ\n"
+"                     Champ d'écriture : Champ de la l'écriture et des sous objets.\n"
+"                     Champ interne : Code journal externe ou numéro de l'écriture.\n"
+"                     Champ texte : Texte fixe.\n"
+"                     Champ construit : Code python pouvant accéder à time et à object (la ligne d'écriture comptable). You can use 'object' and 'time'."
+
+#. module: asgard_ledger_export
 #: model:ir.actions.act_window,name:asgard_ledger_export.action_asgard_ledger_export_statement_draft_tree
 #: model:ir.ui.menu,name:asgard_ledger_export.menu_asgard_ledger_export_statement_draft_tree
 msgid "Draft Moves by Statements"
@@ -301,6 +427,12 @@ msgstr "Brouillon des écritures par relevé"
 #: view:asgard.ledger.export:0
 msgid "Journal line"
 msgstr "Ligne de journaux"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:277
+#, python-format
+msgid "You have to select Journal/Period before populate line."
+msgstr "Vous devez sélectionner le journal/la période avant de peupler les lignes."
 
 #. module: asgard_ledger_export
 #: view:asgard.ledger.export.journal:0
@@ -315,27 +447,19 @@ msgid "Active"
 msgstr "Actif"
 
 #. module: asgard_ledger_export
-#: model:ir.module.module,description:asgard_ledger_export.module_meta_information
-msgid ""
-"\n"
-"Plugin used to export ledger entries to COALA Ledger sofware.\n"
-"    - ....\n"
-msgstr ""
-
-#. module: asgard_ledger_export
 #: help:asgard.ledger.export.fields,field_internal:0
 msgid "Target Jounal Code: Journal code when you run wizard. '# Entry': Number of entry (relative to export)"
-msgstr ""
-
-#. module: asgard_ledger_export
-#: model:ir.model,name:asgard_ledger_export.model_asgard_ledger_export_fields
-msgid "Asgard Ledger Export Fields"
-msgstr ""
+msgstr "Code du journal cible : Code du journal quand vous exécutez de 'wizard'. 'N° écriture' : Numéro de l'écriture relative à l'export."
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export,separator:0
 msgid "Separator field, leave blank if you dont have"
-msgstr ""
+msgstr "Champs séparateur, laisser vide si vous n'en avez pas"
+
+#. module: asgard_ledger_export
+#: view:asgard.ledger.export:0
+msgid "Line information"
+msgstr "Information de ligne"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.statement.line,credit:0
@@ -350,22 +474,12 @@ msgstr "Lignes du relevé"
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.statement,balance:0
 msgid "Balance"
-msgstr ""
-
-#. module: asgard_ledger_export
-#: model:ir.module.module,shortdesc:asgard_ledger_export.module_meta_information
-msgid "Asgard : Ledger plugin"
-msgstr ""
+msgstr "Balance"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.fields,error_label:0
 msgid "Fill this information if the content of the field shouldn't empty. This information ..."
 msgstr "Remplir ce champ si le contenu du champ en cours de définition de doit pas être vide."
-
-#. module: asgard_ledger_export
-#: field:asgard.ledger.export.fields,field_text:0
-msgid "Text"
-msgstr "Teste"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.statement.line,period_id:0
@@ -378,29 +492,29 @@ msgid "Build command"
 msgstr "Format"
 
 #. module: asgard_ledger_export
-#: selection:asgard.ledger.export,end_line:0
-msgid "Unix"
-msgstr ""
+#: view:asgard.ledger.export:0
+msgid "Header"
+msgstr "Entête"
 
 #. module: asgard_ledger_export
-#: help:asgard.ledger.export,extension:0
-msgid "String add on end of name file (without the dot)."
-msgstr "Chaîne ajoutée à la fin du nom du fichier (sans le point)"
+#: selection:asgard.ledger.export,encoding:0
+msgid "ISO-8859-15"
+msgstr "ISO-8859-15"
 
 #. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:235
+#: selection:asgard.ledger.export.statement,state:0
+#, python-format
+msgid "Done"
+msgstr "Terminé"
+
+#. module: asgard_ledger_export
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:235
 #: view:asgard.ledger.export.statement:0
+#: selection:asgard.ledger.export.statement,state:0
+#, python-format
 msgid "Cancel"
 msgstr "Annuler"
-
-#. module: asgard_ledger_export
-#: field:asgard.ledger.export.fields,error_label:0
-msgid "Error label"
-msgstr "Libellé de l'erreur"
-
-#. module: asgard_ledger_export
-#: constraint:ir.model:0
-msgid "The Object name must start with x_ and not contain any special character !"
-msgstr "Le nom de l'objet doit commencer avec x_ et ne pas contenir de charactères spéciaux !"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.journal,journal_name:0
@@ -408,30 +522,35 @@ msgid "Journal name in target software. Warning, you must put exact name"
 msgstr "Nom du journal dans le logiciel cible, vous devez donner le nom exact"
 
 #. module: asgard_ledger_export
-#: help:asgard.ledger.export.statement,journal_period_id:0
-msgid "Select which period you want export."
-msgstr "Sélection de la période à exporter"
+#: view:asgard.ledger.export:0
+msgid "Content"
+msgstr "Contenu"
+
+#. module: asgard_ledger_export
+#: selection:asgard.ledger.export,encoding:0
+msgid "UTF-8"
+msgstr "UTF-8"
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.statement.line,text_line:0
 msgid "Value of the line when it's exported in file (From format field)"
-msgstr ""
+msgstr "Valeur de la ligne quand elle sera exporter dans le fichier."
 
 #. module: asgard_ledger_export
-#: model:ir.model,name:asgard_ledger_export.model_asgard_ledger_export_journal
-msgid "Asgard Ledger Export Journal"
-msgstr "Asgard - Journaux "
-
-#. module: asgard_ledger_export
-#: help:asgard.ledger.export.fields,sequence:0
-msgid "Order of field (in file target)."
-msgstr ""
+#: help:asgard.ledger.export,encoding:0
+msgid "Encoding of exported file"
+msgstr "Encodage du fichier exporté"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.journal,journal_id:0
 #: field:asgard.ledger.export.statement.line,journal_id:0
 msgid "Journal"
-msgstr ""
+msgstr "Journal"
+
+#. module: asgard_ledger_export
+#: help:asgard.ledger.export.fields,field_text:0
+msgid "You can put here text (if 'Field type' on 'Text field') or python expression (if 'Field type' on 'Build field')."
+msgstr "Vous pouvez mettre ici du texte (si 'Type de champs' est sur  'champ texte') ou une expression python (si 'Type de champ' est sur 'Champ construit')."
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export,name:0
@@ -447,13 +566,9 @@ msgid "Fields"
 msgstr "Champs"
 
 #. module: asgard_ledger_export
-#: help:asgard.ledger.export.fields,type_field:0
-msgid ""
-"Select the type of field\n"
-"                     Account field : Field of object 'Account'.\n"
-"                     Internal field : Select field from list.\n"
-"                     Text field : Only text."
-msgstr ""
+#: help:asgard.ledger.export.fields,sequence:0
+msgid "Order of field (in file target)."
+msgstr "N° d'ordre du champ (dans le fichier cible)."
 
 #. module: asgard_ledger_export
 #: help:asgard.ledger.export.fields,position:0
@@ -463,7 +578,7 @@ msgstr "Position dans le fichier exporter (non utilisé)"
 #. module: asgard_ledger_export
 #: selection:asgard.ledger.export.fields,field_internal:0
 msgid "# Entry (relatif)"
-msgstr ""
+msgstr "N° écriture (relatif au fichier)"
 
 #. module: asgard_ledger_export
 #: selection:asgard.ledger.export.fields,type_field:0
@@ -477,29 +592,39 @@ msgid "Entry"
 msgstr "Écriture"
 
 #. module: asgard_ledger_export
+#: model:ir.model,name:asgard_ledger_export.model_asgard_ledger_export_journal
+msgid "Link beetween OpenERP's journal and Sage journal"
+msgstr "Lien entre le journal OpenERP et le journal de l'application de destination"
+
+#. module: asgard_ledger_export
+#: help:asgard.ledger.export.statement,journal_period_id:0
+msgid "Select which period you want export."
+msgstr "Sélection de la période à exporter"
+
+#. module: asgard_ledger_export
 #: field:asgard.ledger.export.fields,sequence:0
 msgid "Sequence"
 msgstr "Séquence"
 
 #. module: asgard_ledger_export
-#: selection:asgard.ledger.export,end_line:0
-msgid "windows"
-msgstr ""
+#: code:addons/asgard_ledger_export/asgard_ledger_export.py:277
+#, python-format
+msgid "No Journal/Period selected !"
+msgstr "Pas de Journal/Période sélectionné !"
 
 #. module: asgard_ledger_export
 #: field:asgard.ledger.export.statement,date:0
 #: field:asgard.ledger.export.statement.line,name:0
 msgid "Date"
-msgstr ""
+msgstr "Date"
 
 #. module: asgard_ledger_export
 #: view:asgard.ledger.export.statement:0
 msgid "Export"
-msgstr ""
+msgstr "Exporter"
 
 #. module: asgard_ledger_export
 #: view:asgard.ledger.export:0
 msgid "Journals lines"
 msgstr "Lignes de journaux"
-
 

@@ -1,39 +1,34 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!-- ###########################################################################
-# Copyright (c) 2005-2008, Héonium SARL - Tous droits réservés
-#               Christophe CRIER <contact@heonium.com> (http://heonium.com)
 #
-# Ce logiciel est régi par la licence CeCILL soumise au droit français et
-# respectant les principes de diffusion des logiciels libres. Vous pouvez
-# utiliser, modifier et/ou redistribuer ce programme sous les conditions
-# de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA 
-# sur le site "http://www.cecill.info".
+#   Asgard Ledger Export (ALE) module,
+#   Copyright (C) 2005 - 2012 Héonium (http://heonium.com).
+#   All Right Reserved
 #
-# En contrepartie de l'accessibilité au code source et des droits de copie,
-# de modification et de redistribution accordés par cette licence, il n'est
-# offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
-# seule une responsabilité restreinte pèse sur l'auteur du programme,  le
-# titulaire des droits patrimoniaux et les concédants successifs.
+#   Asgard Ledger Export (ALE) module is free software: you can redistribute it
+#   and/or modify it under the terms of the Affero GNU General Public License as
+#   published by the Free Software Foundation, either version 3 of the License,
+#   or (at your option) any later version.
 #
-# A cet égard  l'attention de l'utilisateur est attirée sur les risques
-# associés au chargement,  à l'utilisation,  à la modification et/ou au
-# développement et à la reproduction du logiciel par l'utilisateur étant 
-# donné sa spécificité de logiciel libre, qui peut le rendre complexe à 
-# manipuler et qui le réserve donc à des développeurs et des professionnels
-# avertis possédant  des  connaissances  informatiques approfondies.  Les
-# utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
-# logiciel à leurs besoins dans des conditions permettant d'assurer la
-# sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
-# à l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+#   Asgard Ledger Export (ALE) module is distributed in the hope that it will
+#   be useful, but WITHOUT ANY WARRANTY; without even the implied warranty of
+#   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+#   Affero GNU General Public License for more details.
 #
-# Le fait que vous puissiez accéder à cet en-tête signifie que vous avez 
-# pris connaissance de la licence CeCILL, et que vous en avez accepté les
-# termes.
-############################################################################ -->
+#    You should have received a copy of the Affero GNU General Public License
+#    along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+#############################################################################-->
 <openerp>
 	<data>
 
         <menuitem parent="account.menu_finance_periodical_processing" id="menu_asgard_ledger_export" name="Asgard Ledger Export" sequence="1"/>
+
+    <menuitem
+            parent="account.menu_finance_configuration"
+            name ="Asgard Ledger Export"
+            id="menu_asgard_ledger_export_config"
+            sequence="1"/>
 
         <!-- ##########                                              -->
         <!-- ### Définition de type d'export                         -->
@@ -45,34 +40,49 @@
                 <form string="Asgard Ledger Export">
                     <field name="name" select="1"/>
                     <field name="active" select="1"/>
-                    <group colspan="4" col="6">
-                        <field name="extension"/>
-                        <field name="separator"/>
-                        <field name="end_line"/>
-                    </group>
-                    <field colspan="4" mode="tree,form" name="alej_line" nolabel="1" widget="one2many_list">
-                        <form string="Journal line">
-                            <field name="name" select="1"/>
-                            <field name="active" select="1"/>
+                    <notebook colspan="4">
+                        <page string="Content">
+                            <field colspan="4" mode="tree,form" name="alej_line" nolabel="1" widget="one2many_list">
+                                <form string="Journal line">
+                                    <field name="name" select="1"/>
+                                    <field name="active" select="1"/>
+                                    <newline/>
+                                    <field name="journal_name" select="1"/>
+                                    <field name="journal_id"/>
+                                </form>
+                                <tree string="Journals lines">
+                                    <field name="name"/>
+                                    <field name="journal_name"/>
+                                    <field name="journal_id"/>
+                                    <field name="active"/>
+                                </tree>
+                            </field>
                             <newline/>
-                            <field name="journal_name" select="1"/>
-                            <field name="journal_id"/>
-                        </form>
-                        <tree string="Journals lines">
-                            <field name="name"/>
-                            <field name="journal_name"/>
-                            <field name="journal_id"/>
-                            <field name="active"/>
-                        </tree>
-                    </field>
-                    <newline/>
-                    <field colspan="4" mode="tree,form" name="alef_line" nolabel="1" widget="one2many_list">
-                        <tree string="Fields lines">
-                            <field name="sequence"/>
-                            <field name="name"/>
-                            <field name="build_cmd"/>
-                        </tree>
-                    </field>
+                            <field colspan="4" mode="tree,form" name="alef_line" nolabel="1" widget="one2many_list">
+                                <tree string="Fields lines">
+                                    <field name="sequence"/>
+                                    <field name="name"/>
+                                    <field name="build_cmd"/>
+                                    <field name="type_field"/>
+                                </tree>
+                            </field>
+                        </page>
+                        <page string="File description">
+                            <separator colspan="4" string="File name &amp; Encoding"/>
+                            <field colspan="2" name="extension"/>
+                            <field colspan="2" name="encoding"/>
+                            <group colspan="4">
+                                <separator colspan="4" string="Line information"/>
+                                <field colspan="4" name="separator"/>
+                                <field colspan="4" name="end_line"/>
+                            </group>
+                            <newline/>
+                            <group colspan="4">
+                                <separator colspan="4" string="Header"/>
+                                <field colspan="4" name="file_header" nolabel="1"/>
+                            </group>
+                        </page>
+                    </notebook>
                 </form>
             </field>
         </record>
@@ -97,10 +107,10 @@
             <field name="view_mode">tree,form</field>
         </record>
         <menuitem
-            parent="account.menu_finance_configuration"
+            parent="menu_asgard_ledger_export_config"
             id="menu_asgard_ledger_export_cfg"
             action="action_asgard_ledger_export_form" sequence="1"/>
-        
+
 
         <!-- ##########                                              -->
         <!-- ### Liaison des journaux (export/comptabilité OpenERP ) -->
@@ -145,7 +155,7 @@
             <field name="view_mode">tree,form</field>
             <field name="view_id" ref="view_asgard_ledger_export_journal_tree"/>
         </record>
-        <menuitem parent="menu_asgard_ledger_export_cfg" id="asgard_ledger_export_journal_tree" action="action_asgard_ledger_export_journal_tree"/>
+        <menuitem parent="menu_asgard_ledger_export_config" id="asgard_ledger_export_journal_tree" action="action_asgard_ledger_export_journal_tree"/>
 
         <!-- ##########                                              -->
         <!-- ### Definition des champs                               -->
@@ -155,27 +165,28 @@
             <field name="type">form</field>
             <field name="arch" type="xml">
                 <form string="Asgard fields definition">
-                    <field name="name" select="1"/>
-                    <field name="active" select="1"/>
-                    <newline/>
-                    <field name="sequence"/>
-                    <field name="type_field"/>
-                    <group attrs="{'invisible':[('type_field','!=','internal_field')]}" colspan="4">
-                        <field name="field_internal"/>
+                    <group col="6" colspan="4">
+                        <field name="sequence"/>
+                        <field name="name" select="1"/>
+                        <field name="active" select="1"/>
+                        <newline/>
+                        <field colspan="6" name="type_field"/>
+                        <group colspan="6" attrs="{'invisible':[('type_field','!=','internal_field')]}">
+                            <field name="field_internal"/>
+                        </group>
+                        <group colspan="6" attrs="{'invisible':[('type_field','not in',['text_field','build_field'])]}">
+                            <field name="field_text" attrs="{'required':[('type_field','in',['text_field','build_field'])]}"/>
+                        </group>
+                        <group colspan="6" attrs="{'invisible':[('type_field','!=','account_field')],}">
+                            <field name="field_account" attrs="{'required':[('type_field','=','account_field')]}"/>
+                            <field name="field_indirection"/>
+                        </group>
+                        <field name="build_cmd"/>
+                        <field name="position"/>
+                        <field name="lenght"/>
+                        <newline/>
+                        <field colspan="6" name="error_label"/>
                     </group>
-                    <group attrs="{'invisible':[('type_field','!=','text_field')]}" colspan="4">
-                        <field name="field_text"/>
-                    </group>
-                    <group attrs="{'invisible':[('type_field','!=','account_field')]}" colspan="4">
-                        <field name="field_account"/>
-                        <field name="field_indirection"/>
-                    </group>
-                    <newline/>
-                    <field name="build_cmd"/>
-                    <field name="position"/>
-                    <newline/>
-                    <field name="lenght"/>
-                    <field name="error_label"/>
                 </form>
             </field>
         </record>
@@ -206,7 +217,6 @@
                                     <field name="move_id"/>
                                     <field name="period_id"/>
                                     <field name="journal_id"/>
-                                    <field name="date_created"/>
                                     <field name="move_line_id"/>
                                     <field name="account_id"/>
                                     <field name="credit"/>
@@ -215,17 +225,19 @@
                             </field>
                         </page>
                     </notebook>
-                    <group col="8" colspan="4">
+                    <group col="9" colspan="4">
                         <field name="state" select="2"/>
                         <field name="balance" select="2"/>
                         <button name="action_export" type="object" states="confirm" string="Export" icon="gtk-execute"/>
                         <button name="action_draft" states="cancel" string="Draft" type="object"/>
                         <button name="action_confirm" states="draft" string="Confirm" type="object"/>
-                        <button name="action_cancel" states="confirm" string="Cancel" type="object"/>
+                        <button name="action_export" states="done" string="Re-Generate" type="object"/>
+                        <button name="action_cancel" states="confirm,done" string="Cancel" type="object"/>
                     </group>
                 </form>
             </field>
         </record>
+
         <record id="view_asgard_ledger_export_statement_tree" model="ir.ui.view">
             <field name="name">Asgard Ledger Export Statement List</field>
             <field name="model">asgard.ledger.export.statement</field>
@@ -239,13 +251,16 @@
                 </tree>
             </field>
         </record>
+
         <record id="action_asgard_ledger_export_statement_tree" model="ir.actions.act_window">
             <field name="name">Moves by Statements</field>
             <field name="res_model">asgard.ledger.export.statement</field>
             <field name="view_type">form</field>
             <field name="view_mode">tree,form</field>
         </record>
+
         <menuitem action="action_asgard_ledger_export_statement_tree" id="menu_asgard_ledger_export_statement_tree" parent="menu_asgard_ledger_export" sequence="1"/>
+
         <record id="action_asgard_ledger_export_statement_draft_tree" model="ir.actions.act_window">
             <field name="name">Draft Moves by Statements</field>
             <field name="res_model">asgard.ledger.export.statement</field>
@@ -253,14 +268,16 @@
             <field name="view_mode">tree,form</field>
             <field name="domain">[('state','=','draft')]</field>
         </record>
-        <menuitem action="action_asgard_ledger_export_statement_draft_tree" id="menu_asgard_ledger_export_statement_draft_tree" parent="menu_asgard_ledger_export_statement_tree"/>
+
+        <menuitem action="action_asgard_ledger_export_statement_draft_tree" id="menu_asgard_ledger_export_statement_draft_tree" parent="menu_asgard_ledger_export"/>
+
         <record id="action_asgard_ledger_export_statement_tree2" model="ir.actions.act_window">
             <field name="name">New Statement</field>
             <field name="res_model">asgard.ledger.export.statement</field>
             <field name="view_type">form</field>
-            <field name="view_mode">tree,form</field>
+            <field name="view_mode">form,tree</field>
         </record>
-        <menuitem action="action_asgard_ledger_export_statement_tree2" id="menu_asgard_ledger_export_statement_tree2" parent="menu_asgard_ledger_export_statement_tree"/>
-
+        <menuitem action="action_asgard_ledger_export_statement_tree2" id="menu_asgard_ledger_export_statement_tree2" parent="menu_asgard_ledger_export"/>
+        
 	</data>
 </openerp>

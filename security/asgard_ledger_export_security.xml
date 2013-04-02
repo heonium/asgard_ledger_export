@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- 
+################################################################################
+#
+#   Héonium Asgard Ledger Export (ALE) module,
+#   Copyright (C) 2005 - 2011 Héonium (http://heonium.com). All Right Reserved
+#
+#   Héonium Asgard Ledger Export (ALE) module
+#   is free software: you can redistribute it and/or modify it under the terms
+#   of the Affero GNU General Public License as published by the Free Software
+#   Foundation, either version 3 of the License, or (at your option) any later
+#   version.
+#
+#   Héonium Asgard Ledger Export (ALE) module
+#   is distributed in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+#   without even the implied warranty of MERCHANTABILITY or FITNESS FOR A
+#   PARTICULAR PURPOSE. See the Affero GNU General Public License for more
+#   details.
+#
+#   You should have received a copy of the Affero GNU General Public License
+#   along with this program.  If not, see <http://www.gnu.org/licenses/>.
+#
+################################################################################
+-->
+<openerp>
+    <data>
+    
+        <record id="ale_rule" model="ir.rule">
+            <field name="name">Asgard Ledger Export</field>
+            <field search="[('model','=','asgard.ledger.export')]" name="model_id"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ale_journal_rule" model="ir.rule">
+            <field name="name">Asgard Ledger Export Journal</field>
+            <field search="[('model','=','asgard.ledger.export.journal')]" name="model_id"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+        
+        <record id="ale_fields_rule" model="ir.rule">
+            <field name="name">Asgard Ledger Export Fields</field>
+            <field search="[('model','=','asgard.ledger.export.fields')]" name="model_id"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ale_statement_rule" model="ir.rule">
+            <field name="name">Asgard Ledger Export Statement</field>
+            <field search="[('model','=','asgard.ledger.export.statement')]" name="model_id"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+        <record id="ale_statement_line_rule" model="ir.rule">
+            <field name="name">Asgard Ledger Export Statement Line</field>
+            <field search="[('model','=','asgard.ledger.export.statement.line')]" name="model_id"/>
+            <field eval="True" name="global"/>
+            <field name="domain_force">['|',('company_id','=',False),('company_id','child_of',[user.company_id.id])]</field>
+        </record>
+
+    </data>
+</openerp>
