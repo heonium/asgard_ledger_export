@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openerp>
+    <data noupdate="1">
+
+        <record id="sequence_asgard_ledger_export_type" model="ir.sequence.type">
+            <field name="name">Asgard Ledger Export Statement</field>
+            <field name="code">asgard.ledger.export.statement</field>
+        </record>
+        <record id="sequence_asgard_ledger_export_statement" model="ir.sequence">
+            <field name="name">Asgard Ledger Export Statement</field>
+            <field name="code">asgard.ledger.export.statement</field>
+            <field name="prefix">ALE. %(month)s/%(day)s - </field>
+            <field eval="0" name="number_next"/>
+            <field eval="1" name="number_increment"/>
+        </record>
+
+    </data>
+</openerp>

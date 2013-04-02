@@ -1,0 +1,18 @@
+2011-10-27: 0.08
+=======================
+
+ - Adapt to OpenERP V6
+
+2010-07-13: 0.07
+=======================
+
+ - Change licence to AGPL
+ - Add possibility to choose encoding for exported file
+ - Add a possibility to choose escape character (\n, \r, ...) for separator
+ - Add 'build' type of field for build field from python code
+ - Some translation
+
+2009-08-30: 0.01
+=======================
+
+ - First publishing of this module.

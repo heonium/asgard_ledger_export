@@ -1,0 +1,266 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- ###########################################################################
+# Copyright (c) 2005-2008, Héonium SARL - Tous droits réservés
+#               Christophe CRIER <contact@heonium.com> (http://heonium.com)
+#
+# Ce logiciel est régi par la licence CeCILL soumise au droit français et
+# respectant les principes de diffusion des logiciels libres. Vous pouvez
+# utiliser, modifier et/ou redistribuer ce programme sous les conditions
+# de la licence CeCILL telle que diffusée par le CEA, le CNRS et l'INRIA 
+# sur le site "http://www.cecill.info".
+#
+# En contrepartie de l'accessibilité au code source et des droits de copie,
+# de modification et de redistribution accordés par cette licence, il n'est
+# offert aux utilisateurs qu'une garantie limitée.  Pour les mêmes raisons,
+# seule une responsabilité restreinte pèse sur l'auteur du programme,  le
+# titulaire des droits patrimoniaux et les concédants successifs.
+#
+# A cet égard  l'attention de l'utilisateur est attirée sur les risques
+# associés au chargement,  à l'utilisation,  à la modification et/ou au
+# développement et à la reproduction du logiciel par l'utilisateur étant 
+# donné sa spécificité de logiciel libre, qui peut le rendre complexe à 
+# manipuler et qui le réserve donc à des développeurs et des professionnels
+# avertis possédant  des  connaissances  informatiques approfondies.  Les
+# utilisateurs sont donc invités à charger  et  tester  l'adéquation  du
+# logiciel à leurs besoins dans des conditions permettant d'assurer la
+# sécurité de leurs systèmes et ou de leurs données et, plus généralement, 
+# à l'utiliser et l'exploiter dans les mêmes conditions de sécurité. 
+#
+# Le fait que vous puissiez accéder à cet en-tête signifie que vous avez 
+# pris connaissance de la licence CeCILL, et que vous en avez accepté les
+# termes.
+############################################################################ -->
+<openerp>
+	<data>
+
+        <menuitem parent="account.menu_finance_periodical_processing" id="menu_asgard_ledger_export" name="Asgard Ledger Export" sequence="1"/>
+
+        <!-- ##########                                              -->
+        <!-- ### Définition de type d'export                         -->
+        <record model="ir.ui.view" id="view_asgard_ledger_export_form">
+            <field name="name">Asgard Ledger Export</field>
+            <field name="model">asgard.ledger.export</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asgard Ledger Export">
+                    <field name="name" select="1"/>
+                    <field name="active" select="1"/>
+                    <group colspan="4" col="6">
+                        <field name="extension"/>
+                        <field name="separator"/>
+                        <field name="end_line"/>
+                    </group>
+                    <field colspan="4" mode="tree,form" name="alej_line" nolabel="1" widget="one2many_list">
+                        <form string="Journal line">
+                            <field name="name" select="1"/>
+                            <field name="active" select="1"/>
+                            <newline/>
+                            <field name="journal_name" select="1"/>
+                            <field name="journal_id"/>
+                        </form>
+                        <tree string="Journals lines">
+                            <field name="name"/>
+                            <field name="journal_name"/>
+                            <field name="journal_id"/>
+                            <field name="active"/>
+                        </tree>
+                    </field>
+                    <newline/>
+                    <field colspan="4" mode="tree,form" name="alef_line" nolabel="1" widget="one2many_list">
+                        <tree string="Fields lines">
+                            <field name="sequence"/>
+                            <field name="name"/>
+                            <field name="build_cmd"/>
+                        </tree>
+                    </field>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_asgard_ledger_export_tree">
+            <field name="name">Asgard Ledger Export list</field>
+            <field name="model">asgard.ledger.export</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Asgard Ledger Export">
+                    <field name="name"/>
+                    <field name="separator"/>
+                    <field name="end_line"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_asgard_ledger_export_form" model="ir.actions.act_window">
+            <field name="name">Asgard Ledger Export</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">asgard.ledger.export</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem
+            parent="account.menu_finance_configuration"
+            id="menu_asgard_ledger_export_cfg"
+            action="action_asgard_ledger_export_form" sequence="1"/>
+        
+
+        <!-- ##########                                              -->
+        <!-- ### Liaison des journaux (export/comptabilité OpenERP ) -->
+        <record model="ir.ui.view" id="view_asgard_ledger_export_journal_form">
+            <field name="name">Journal configuration</field>
+            <field name="model">asgard.ledger.export.journal</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Journal configuration">
+                    <field name="name" select="1"/>
+                    <field name="active" select="1"/>
+                    <newline/>
+                    <field name="asgard_ledger_id" select="1"/>
+                    <notebook colspan="4">
+                        <page string="Journals">
+                            <field name="journal_name"/>
+                            <field name="journal_id"/>
+                        </page>
+                    </notebook>
+                </form>
+            </field>
+        </record>
+        <record model="ir.ui.view" id="view_asgard_ledger_export_journal_tree">
+            <field name="name">Linked journal list</field>
+            <field name="model">asgard.ledger.export.journal</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree string="Linked journal list">
+                    <field name="name"/>
+                    <field name="asgard_ledger_id"/>
+                    <field name="journal_name"/>
+                    <field name="journal_id"/>
+                    <field name="active"/>
+                </tree>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="action_asgard_ledger_export_journal_tree">
+            <field name="name">Linked journal list</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">asgard.ledger.export.journal</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="view_id" ref="view_asgard_ledger_export_journal_tree"/>
+        </record>
+        <menuitem parent="menu_asgard_ledger_export_cfg" id="asgard_ledger_export_journal_tree" action="action_asgard_ledger_export_journal_tree"/>
+
+        <!-- ##########                                              -->
+        <!-- ### Definition des champs                               -->
+        <record model="ir.ui.view" id="view_asgard_ledger_export_fields_form">
+            <field name="name">Fields definition</field>
+            <field name="model">asgard.ledger.export.fields</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asgard fields definition">
+                    <field name="name" select="1"/>
+                    <field name="active" select="1"/>
+                    <newline/>
+                    <field name="sequence"/>
+                    <field name="type_field"/>
+                    <group attrs="{'invisible':[('type_field','!=','internal_field')]}" colspan="4">
+                        <field name="field_internal"/>
+                    </group>
+                    <group attrs="{'invisible':[('type_field','!=','text_field')]}" colspan="4">
+                        <field name="field_text"/>
+                    </group>
+                    <group attrs="{'invisible':[('type_field','!=','account_field')]}" colspan="4">
+                        <field name="field_account"/>
+                        <field name="field_indirection"/>
+                    </group>
+                    <newline/>
+                    <field name="build_cmd"/>
+                    <field name="position"/>
+                    <newline/>
+                    <field name="lenght"/>
+                    <field name="error_label"/>
+                </form>
+            </field>
+        </record>
+
+        <!-- ##########                                              -->
+        <!-- ### État des exports vers la comptabilité               -->
+        <record model="ir.ui.view" id="view_asgard_ledger_export_statement_form">
+            <field name="name">Asgard Ledger Export Statement</field>
+            <field name="model">asgard.ledger.export.statement</field>
+            <field name="type">form</field>
+            <field name="arch" type="xml">
+                <form string="Asgard Ledger Export Statement">
+                    <field name="name" select="1"/>
+                    <field name="date" select="1"/>
+                    <field name="ale_id" select="1"/>
+                    <group colspan="2" col="3">
+                        <button name="action_populate" type="object" states="draft" string="Populate" icon="gtk-execute" attrs="{'invisible':[('state','=','confirm')]}"/>
+                    </group>
+                    <newline/>
+                    <group string="Journal/Period" colspan="4">
+                        <field name="journal_period_id" nolabel="1" colspan="4" select="2"/>
+                    </group>
+                    <notebook colspan="4">
+                        <page string="Select move line">
+                            <field colspan="4" mode="tree,form" name="ales_line_ids" nolabel="1" widget="one2many_list">
+                                <tree string="Statement lines">
+                                    <field name="date_created"/>
+                                    <field name="move_id"/>
+                                    <field name="period_id"/>
+                                    <field name="journal_id"/>
+                                    <field name="date_created"/>
+                                    <field name="move_line_id"/>
+                                    <field name="account_id"/>
+                                    <field name="credit"/>
+                                    <field name="debit"/>
+                                </tree>
+                            </field>
+                        </page>
+                    </notebook>
+                    <group col="8" colspan="4">
+                        <field name="state" select="2"/>
+                        <field name="balance" select="2"/>
+                        <button name="action_export" type="object" states="confirm" string="Export" icon="gtk-execute"/>
+                        <button name="action_draft" states="cancel" string="Draft" type="object"/>
+                        <button name="action_confirm" states="draft" string="Confirm" type="object"/>
+                        <button name="action_cancel" states="confirm" string="Cancel" type="object"/>
+                    </group>
+                </form>
+            </field>
+        </record>
+        <record id="view_asgard_ledger_export_statement_tree" model="ir.ui.view">
+            <field name="name">Asgard Ledger Export Statement List</field>
+            <field name="model">asgard.ledger.export.statement</field>
+            <field name="type">tree</field>
+            <field name="arch" type="xml">
+                <tree colors="red:balance!=0.0;blue:state=='draft' and (balance==0.0)" string="Statement">
+                    <field name="date"/>
+                    <field name="name"/>
+                    <field name="balance"/>
+                    <field name="state"/>
+                </tree>
+            </field>
+        </record>
+        <record id="action_asgard_ledger_export_statement_tree" model="ir.actions.act_window">
+            <field name="name">Moves by Statements</field>
+            <field name="res_model">asgard.ledger.export.statement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_asgard_ledger_export_statement_tree" id="menu_asgard_ledger_export_statement_tree" parent="menu_asgard_ledger_export" sequence="1"/>
+        <record id="action_asgard_ledger_export_statement_draft_tree" model="ir.actions.act_window">
+            <field name="name">Draft Moves by Statements</field>
+            <field name="res_model">asgard.ledger.export.statement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="domain">[('state','=','draft')]</field>
+        </record>
+        <menuitem action="action_asgard_ledger_export_statement_draft_tree" id="menu_asgard_ledger_export_statement_draft_tree" parent="menu_asgard_ledger_export_statement_tree"/>
+        <record id="action_asgard_ledger_export_statement_tree2" model="ir.actions.act_window">
+            <field name="name">New Statement</field>
+            <field name="res_model">asgard.ledger.export.statement</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+        </record>
+        <menuitem action="action_asgard_ledger_export_statement_tree2" id="menu_asgard_ledger_export_statement_tree2" parent="menu_asgard_ledger_export_statement_tree"/>
+
+	</data>
+</openerp>
